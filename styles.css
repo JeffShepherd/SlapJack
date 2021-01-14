@@ -1,11 +1,54 @@
 /* full document */
-
-
+html {
+  background-color: grey;
+}
+body {
+  margin: 0;
+  text-align: center;
+}
 
 
 /* header */
-
-
-
+header {
+  height: 15vh;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h4 {
+  padding: auto;
+}
 
 /* main card section */
+main {
+  height: 70vh;
+  display: flex;
+  justify-content: space-around;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 205px;
+}
+img {
+  height: 250px;
+  width: 175px;
+  border: 2px solid;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* left and right card section */
+
+/* center card section */
+.discard-pile {
+  margin-bottom: 50px;
+}
+
+
+/* other */
+.hidden {
+  display: none;
+}
