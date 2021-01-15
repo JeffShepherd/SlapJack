@@ -41,6 +41,10 @@ class Game {
     player.saveWinsToStorage();
   }
   resetGame() {
-
+    this.playerOne.hand = [];
+    this.playerOne.hand = [];
+    this.centralPile = [];
+    this.shuffleDeck(this.fullDeck);
+    this.dealFullDeck();
   }
 }
