@@ -4,13 +4,21 @@ class Game {
     this.playerTwo = new Player(2);
     this.playerOneTurn = true;
     this.centralPile = [];
-    this.fullDeck = [];
+    this.fullDeck = [1,2,3,4,5];
   }
   shuffleDeck() {
 
   }
   dealFullDeck() {
-
+    var counter = 0;
+    for(var i = 0; i < this.fullDeck.length; i++)
+      if(counter === 0) {
+        this.playerOne.hand.unshift(this.fullDeck[i]);
+        counter++;
+      } else {
+        this.playerTwo.hand.unshift(this.fullDeck[i]);
+        counter--
+      }
   }
   moveCardToMiddle() {
 
@@ -22,6 +30,6 @@ class Game {
 
   }
   resetGame() {
-    
+
   }
 }
