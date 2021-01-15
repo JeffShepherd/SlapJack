@@ -6,4 +6,22 @@ class Game {
     this.centralPile = [];
     this.fullDeck = [];
   }
+  shuffleDeck() {
+
+  }
+  dealFullDeck() {
+
+  }
+  moveCardToMiddle() {
+
+  }
+  slap() {
+
+  }
+  updateWinCount() {
+
+  }
+  resetGame() {
+    
+  }
 }
