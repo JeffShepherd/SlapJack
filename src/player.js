@@ -15,6 +15,6 @@ class Player {
 
   saveWinsToStorage() {
     var wins = JSON.stringify(this.wins);
-    localStorage.setItem('playerOne', wins);
+    localStorage.setItem(`player${this.id}`, wins);
   }
 }
