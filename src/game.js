@@ -29,8 +29,9 @@ class Game {
         counter--;
       }
   }
-  moveCardToMiddle() {
-
+  moveCardToMiddle(player) {
+    var card = player.hand.splice(0, 1);
+    this.centralPile.unshift(card);
   }
   slap() {
 
