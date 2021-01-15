@@ -17,7 +17,7 @@ class Game {
         counter++;
       } else {
         this.playerTwo.hand.unshift(this.fullDeck[i]);
-        counter--
+        counter--;
       }
   }
   moveCardToMiddle() {
@@ -26,8 +26,9 @@ class Game {
   slap() {
 
   }
-  updateWinCount() {
-
+  updateWinCount(player) {
+    this.player.wins++;
+    player.saveWinsToStorage()   ; 
   }
   resetGame() {
 
