@@ -10,8 +10,13 @@ class Game {
     'red-01', 'red-02', 'red-03', 'red-04', 'red-05', 'red-06', 'red-07', 'red-08', 'red-09', 'red-10', 'red-jack', 'red-queen', 'red-king',
     'wild'];
   }
-  shuffleDeck() {
-
+  shuffleDeck(deck) {
+    for(var x = deck.length - 1; x > 0; x--) {
+      var random = Math.floor(Math.random() * x);
+      var temp = deck[x];
+      deck[x] = deck[random];
+      deck[random] = temp;
+    }
   }
   dealFullDeck() {
     var counter = 0;
