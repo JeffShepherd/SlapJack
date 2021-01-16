@@ -19,19 +19,19 @@ function checkKeyPress(event) {
     if (game.slap()) {
       console.log('shuffle')//take cards and shuffle them into deck
     } else {
-      console.log('bad slap')//bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
+      game.punishBadSlap(1);//bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
   } else if (key === 74) { //key j - playerTwo slap
     if (game.slap()) {
       console.log('shuffle')//take cards and shuffle them into deck
     } else {
-      console.log('bad slap')//bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
+      game.punishBadSlap(2);//bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
   } else if (key === 81 && game.playerTurn === 1 && game.playerOne.hand.length !== 0) { //key q - playerOne deal if it's their turn
-    console.log('move card')//move playerOne top card to middle
+    game.moveCardToMiddle();//move playerOne top card to middle
     game.playerTurn = 2;//change player turn
   } else if (key === 80 && game.playerTurn === 2 && game.playerTwo.hand.length !== 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
-    console.log('move card')//move playerTwo top card to middle
+    game.moveCardToMiddle();//move playerTwo top card to middle
     game.playerTurn = 1;//change player turn
   } else {
     console.log('wrong key pressed') //invalid key (remove after testing)

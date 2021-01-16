@@ -36,6 +36,13 @@ class Game {
       this.centralPile.unshift(this.playerTwo.playCard());
     }
   }
+  punishBadSlap(player) {
+    if(player === 1) {
+      this.playerTwo.hand.push(this.playerOne.playCard());
+    } else {
+      this.playerOne.hand.push(this.playerTwo.playCard());
+    }
+  }
 
   slap() {
     if(this.centralPile.length === 0) {
