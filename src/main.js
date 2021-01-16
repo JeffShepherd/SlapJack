@@ -5,25 +5,35 @@ window.addEventListener('load', loadGame);
 
 
 function loadGame() {
-  game.resetGame();//resets central pile and repopulates fullDeck
+  game.resetGame(); //resets central pile and repopulates fullDeck
   //update player wins from storage
 }
 
-document.addEventListener('keydown', function() {
+document.addEventListener('keydown', function(event) {
   checkKeyPress(event);
 })
 
 function checkKeyPress(event) {
   var key = event.keyCode;
-  if(key === 70) {
-    console.log('f')//key f - playerOne slap
-  } else if(key === 74) {
-    console.log('j')//key j - playerTwo slap
-  } else if(key === 81) {
-    console.log('q')//key q - playerOne deal
-  } else if(key === 80) {
-    console.log('p')//key p - playerTwo deal
+  if (key === 70) { //key f - playerOne slap
+    if (game.slap()) {
+      console.log('shuffle')//take cards and shuffle them into deck
+    } else {
+      console.log('bad slap')//bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
+    }
+  } else if (key === 74) { //key j - playerTwo slap
+    if (game.slap()) {
+      console.log('shuffle')//take cards and shuffle them into deck
+    } else {
+      console.log('bad slap')//bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
+    }
+  } else if (key === 81 && game.playerTurn === 1) { //key q - playerOne deal if it's their turn
+    console.log('move card')//move playerOne top card to middle
+    game.playerTurn = 2;//change player turn
+  } else if (key === 80 && game.playerTurn === 2) { //key p - playerTwo deal - playerTwo deal if it's their turn
+    console.log('move card')//move playerTwo top card to middle
+    game.playerTurn = 1;//change player turn
   } else {
-    console.log('wrong key pressed')//invalid key
+    console.log('wrong key pressed') //invalid key (remove after testing)
   }
 }

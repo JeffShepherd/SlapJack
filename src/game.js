@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.playerOne = new Player(1);
     this.playerTwo = new Player(2);
-    this.playerOneTurn = true;
+    this.playerTurn = 1;
     this.centralPile = [];
     this.fullDeck = ['blue-01', 'blue-02', 'blue-03', 'blue-04', 'blue-05', 'blue-06', 'blue-07', 'blue-08', 'blue-09', 'blue-10', 'blue-jack', 'blue-queen', 'blue-king',
       'gold-01', 'gold-02', 'gold-03', 'gold-04', 'gold-05', 'gold-06', 'gold-07', 'gold-08', 'gold-09', 'gold-10', 'gold-jack', 'gold-queen', 'gold-king',
@@ -39,6 +39,9 @@ class Game {
   }
 
   slap() {
+    if(this.centralPile.length === 0) {
+      return false;
+    }
     var evaluation = this.createRecentCards();
 
     if (evaluation[0] === 'k') {//check for jack
