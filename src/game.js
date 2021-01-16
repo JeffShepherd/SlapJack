@@ -29,13 +29,12 @@ class Game {
         counter--;
       }
   }
-  moveCardToMiddle() {
-    // console.log(this.playerOne.playCard())
-    // if(player === 'one') {
+  moveCardToMiddle() {//tested and working
+    if(this.playerTurn === 1) {
       this.centralPile.unshift(this.playerOne.playCard());
-    // } else {
-      // this.centralPile.unshift(this.playerTwo.playCard());
-    // }
+    } else {
+      this.centralPile.unshift(this.playerTwo.playCard());
+    }
   }
 
   slap() {
@@ -50,7 +49,7 @@ class Game {
       return true;
     } else if (evaluation.length > 2 && evaluation[0] === evaluation[2]) {//check for sandwich
       return true;
-    } else {//return flase if it's a bad slap
+    } else {//return false if it's a bad slap
       return false;
     }
   }//idea: use one conditional if(checkforJack() \\ checkfor Pair() \\ checkfor Sandwich())

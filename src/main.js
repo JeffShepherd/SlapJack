@@ -27,10 +27,10 @@ function checkKeyPress(event) {
     } else {
       console.log('bad slap')//bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
-  } else if (key === 81 && game.playerTurn === 1) { //key q - playerOne deal if it's their turn
+  } else if (key === 81 && game.playerTurn === 1 && game.playerOne.hand.length !== 0) { //key q - playerOne deal if it's their turn
     console.log('move card')//move playerOne top card to middle
     game.playerTurn = 2;//change player turn
-  } else if (key === 80 && game.playerTurn === 2) { //key p - playerTwo deal - playerTwo deal if it's their turn
+  } else if (key === 80 && game.playerTurn === 2 && game.playerTwo.hand.length !== 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
     console.log('move card')//move playerTwo top card to middle
     game.playerTurn = 1;//change player turn
   } else {
