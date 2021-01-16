@@ -31,20 +31,23 @@ class Game {
       }
   }
   moveCardToMiddle() {//make dynamic later
-    // var playerFocus = player
     this.centralPile.unshift(this.playerOne.hand.shift());
   }
-  slap(player) {
-    // if (centralPile.length < 1) {
-    //   return //can't do anything
-    // } else if (centralPile.length < 2) {
-    //   //jack valid only
-    // } else if (centralPile.length < 3) {
-    //   //jack and double valid
-    // } else {
-    //   //jack double and sandwich valid
-    // }
-  }
+
+  slap() {
+    var evaluation = this.createRecentCards();
+
+    if (evaluation[0] === 'k') {//check for jack
+      return true;
+    } else if (evaluation.length > 1 && evaluation[0] === evaluation[1]) {//check for pair
+      return true;
+    } else if (evaluation.length > 2 && evaluation[0] === evaluation[2]) {//check for sandwich
+      return true;
+    } else {//return flase if it's a bad slap
+      return false;
+    }
+  }//idea: use one conditional if(checkforJack() \\ checkfor Pair() \\ checkfor Sandwich())
+
   createRecentCards() {
     var recentCards = [];
     for(var i = 0; i < this.centralPile.length; i++) {
@@ -60,6 +63,7 @@ class Game {
     this.player.wins++;
     player.saveWinsToStorage();
   }
+
   resetGame() {
     this.playerOne.hand = [];
     this.playerOne.hand = [];
