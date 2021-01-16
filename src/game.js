@@ -18,6 +18,16 @@ class Game {
       deck[random] = temp;
     }
   }
+  winCentralPile(player) {
+    if(player === 1) {
+      this.playerOne.hand = (this.playerOne.hand.concat(this.centralPile));
+      this.shuffleDeck(this.playerOne.hand)
+    } else {
+      this.playerTwo.hand = (this.playerTwo.hand.concat(this.centralPile));
+      this.shuffleDeck(this.playerTwo.hand)
+    }
+    this.centralPile = [];
+  }
   dealFullDeck() {//tested and working
     var counter = 0;
     for (var i = 0; i < this.fullDeck.length; i++)

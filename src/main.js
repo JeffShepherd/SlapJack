@@ -22,13 +22,13 @@ function checkKeyPress(event) {
 function checkForSlapKey(key) {
   if (key === 70) { //key f - playerOne slap
     if (game.slap()) {
-      console.log('shuffle') //take middle cards and shuffle them into deck
+      game.winCentralPile(1);//take middle cards and shuffle them into deck
     } else {
       game.punishBadSlap(1); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
   } else if (key === 74) { //key j - playerTwo slap
     if (game.slap()) {
-      console.log('shuffle') //take middle cards and shuffle them into deck
+      game.winCentralPile(2); //take middle cards and shuffle them into deck
     } else {
       game.punishBadSlap(2); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
