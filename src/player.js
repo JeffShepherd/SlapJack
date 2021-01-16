@@ -6,11 +6,7 @@ class Player {
   }
 
   playCard() {
-    if (this.hand.length !== 0) {
-      //add card to central pile
-    } else {
-      //show a message saying you have no cards to play?
-    }
+    this.hand.shift();
   }
 
   saveWinsToStorage() {
