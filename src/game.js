@@ -29,13 +29,13 @@ class Game {
         counter--;
       }
   }
-  moveCardToMiddle(player) {
-    console.log(this.playerOne.playCard())
-    if(player === 'one') {
+  moveCardToMiddle() {
+    // console.log(this.playerOne.playCard())
+    // if(player === 'one') {
       this.centralPile.unshift(this.playerOne.playCard());
-    } else {
-      this.centralPile.unshift(this.playerTwo.playCard());
-    }
+    // } else {
+      // this.centralPile.unshift(this.playerTwo.playCard());
+    // }
   }
 
   slap() {
