@@ -64,6 +64,17 @@ class Game {
       return false;
     }
   }
+  slapAtEndGame() {
+    if(this.centralPile.length === 0) {
+      return false;
+    }
+    var evaluation = this.createRecentCards();
+    if(this.checkForJack(evaluation)) {
+      return true;
+    } else {
+      return false;
+  }
+}
   // slap() {
   //   if(this.centralPile.length === 0) {
   //     return false;
