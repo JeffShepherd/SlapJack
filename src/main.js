@@ -22,7 +22,7 @@ function checkKeyPress(event) {
 function checkForSlapKey(key) {
   if (key === 70) { //key f - playerOne slap
     if (game.slap()) {
-      game.winCentralPile(1);//take middle cards and shuffle them into deck
+      game.winCentralPile(1); //take middle cards and shuffle them into deck
     } else {
       game.punishBadSlap(1); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
@@ -34,6 +34,13 @@ function checkForSlapKey(key) {
     }
   }
 }
+
+// function checkForEndScenario() 
+////check for end conditions ( both players have 0 and winning player gets full shuffled deck)
+//other condition: if it's a good slap and other player has 0 cards: game win
+//other condition: bad slap by losing player is game win
+//pass in player
+
 
 function checkForDealKey(key) {
   if (key === 81 && game.playerTurn === 1 && game.playerOne.hand.length !== 0) { //key q - playerOne deal if it's their turn

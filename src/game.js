@@ -53,24 +53,48 @@ class Game {
       this.playerOne.hand.push(this.playerTwo.playCard());
     }
   }
-
   slap() {
     if(this.centralPile.length === 0) {
       return false;
     }
     var evaluation = this.createRecentCards();
-
-    if (evaluation[0] === 'k') {//check for jack
+    if(this.checkForJack(evaluation) || this.checkForPair(evaluation) || this.checkForSandwich(evaluation)) {
       return true;
-    } else if (evaluation.length > 1 && evaluation[0] === evaluation[1]) {//check for pair
-      return true;
-    } else if (evaluation.length > 2 && evaluation[0] === evaluation[2]) {//check for sandwich
-      return true;
-    } else {//return false if it's a bad slap
+    } else {
       return false;
     }
-  }//idea: use one conditional if(checkforJack() \\ checkfor Pair() \\ checkfor Sandwich())
-
+  }
+  // slap() {
+  //   if(this.centralPile.length === 0) {
+  //     return false;
+  //   }
+  //   var evaluation = this.createRecentCards();
+  //
+  //   if (evaluation[0] === 'k') {//check for jack
+  //     return true;
+  //   } else if (evaluation.length > 1 && evaluation[0] === evaluation[1]) {//check for pair
+  //     return true;
+  //   } else if (evaluation.length > 2 && evaluation[0] === evaluation[2]) {//check for sandwich
+  //     return true;
+  //   } else {//return false if it's a bad slap
+  //     return false;
+  //   }
+  // }
+  checkForJack(cardsToEvaluate) {
+    if(cardsToEvaluate[0] === 'k') {
+      return true;
+    }
+  }
+  checkForPair(cardsToEvaluate) {
+    if(cardsToEvaluate.length > 1 && cardsToEvaluate[0] === cardsToEvaluate[1]) {
+      return true;
+    }
+  }
+  checkForSandwich(cardsToEvaluate) {
+    if(cardsToEvaluate.length > 2 && cardsToEvaluate[0] === cardsToEvaluate[2]) {
+      return true;
+  }
+}
   createRecentCards() {//tested and working
     var recentCards = [];
     for(var i = 0; i < this.centralPile.length; i++) {
