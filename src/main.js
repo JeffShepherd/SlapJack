@@ -1,13 +1,5 @@
 var game = new Game();
 
-////check for end conditions:
-//condition: solved: if it's a good slap of jack and other player has 0 cards: game win
-//condition: solved: bad slap by losing player is game win
-//condition: solved: losing player can only slap jack
-//condition: solved: if one player has zero cards, and the other runs out, winner gets central pile
-
-
-
 window.addEventListener('load', loadGame);
 document.addEventListener('keydown', function(event) {
   checkKeyPress(event);
@@ -50,8 +42,10 @@ function checkForSlapKey(player) {
 function checkForJackSlapAtEnd(player) {
    if (player === 1 && game.centralPile[0].includes('jack') && getHandLength(2) === 0) {
      console.log('game over player One wins'); //add function here that ends game
+     return
    } else if (player === 2 && game.centralPile[0].includes('jack') && getHandLength(1) === 0) {
      console.log('game over player Two wins')//add function here that ends game
+     return
    }
 }
 
@@ -83,7 +77,6 @@ function giveWinningPlayerDeckBack(player) {//give deck back to player if they a
     winCentralPile(2);//shuffle middle deck and give to player
   }
 }
-
 
 function checkForEndScenario() {
   if (getHandLength(1) === 0) {
