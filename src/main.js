@@ -20,7 +20,9 @@ function checkKeyPress(event) {
 }
 
 function checkForSlapKey(key) {
-  if (key === 70 && game.playerOne.hand.length === 0) {//key f - playerOne slap
+
+
+  if (key === 70 && getHandLength(1) === 0) {//key f - playerOne slap
     if (game.slapAtEndGame()) {
       game.winCentralPile(1)
     } else {
@@ -33,7 +35,7 @@ function checkForSlapKey(key) {
     } else {
       game.punishBadSlap(1); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
-  } else if (key === 74 && game.playerTwo.hand.length === 0) { //key j - playerTwo slap
+  } else if (key === 74 && getHandLength(2) === 0) { //key j - playerTwo slap
     if (game.slapAtEndGame()) {
       game.winCentralPile(2)
     } else {
@@ -57,9 +59,9 @@ function checkForSlapKey(key) {
 //pass in player
 
 function checkForJackSlapAtEnd(player) {
-   if (player === 1 && game.centralPile[0].includes('jack') && game.playerTwo.hand.length === 0) {
+   if (player === 1 && game.centralPile[0].includes('jack') && getHandLength(2) === 0) {
      console.log('game over player One wins'); //add function here that ends game
-   } else if (player === 2 && game.centralPile[0].includes('jack') && game.playerOne.hand.length === 0) {
+   } else if (player === 2 && game.centralPile[0].includes('jack') && getHandLength(1) === 0) {
      console.log('game over player Two wins')//add function here that ends game
    }
 }
@@ -67,10 +69,10 @@ function checkForJackSlapAtEnd(player) {
 
 function checkForDealKey(key) {
   checkForEndScenario();
-  if (key === 81 && game.playerTurn === 1 && game.playerOne.hand.length !== 0) { //key q - playerOne deal if it's their turn
+  if (key === 81 && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
     game.playerTurn = 2; //change player turn
-  } else if (key === 80 && game.playerTurn === 2 && game.playerTwo.hand.length !== 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
+  } else if (key === 80 && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
     game.moveCardToMiddle(); //move playerTwo top card to middle
     game.playerTurn = 1; //change player turn
   } else {
@@ -80,9 +82,18 @@ function checkForDealKey(key) {
 }
 
 function checkForEndScenario() {
-  if (game.playerOne.hand.length === 0) {
+  if(game.)
+  if (getHandLength(1) === 0) {
     game.playerTurn = 2;
-  } else if (game.playerTwo.hand.length === 0) {
+  } else if (getHandLength(2) === 0) {
     game.playerTurn = 1;
+  }
+}
+
+getHandLength(player) {
+  if(player === 1) {
+    return game.playerOne.hand.length
+  } else if(player === 2) {
+    return game.playerTwo.hand.length
   }
 }
