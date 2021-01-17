@@ -1,10 +1,19 @@
+//global variables and query selectors
 var game = new Game();
+var playerOnePile = document.querySelector('#playerOnePile');
+var centralPile = document.querySelector('#centralPile');
+var playerTwoPile = document.querySelector('#playerTwoPile');
 
+
+
+//event listeners
 window.addEventListener('load', loadGame);
 document.addEventListener('keydown', function(event) {
   checkKeyPress(event);
 })
 
+
+//functions
 function checkKeyPress(event) {
   var key = event.keyCode;
   var player;
