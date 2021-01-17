@@ -19,10 +19,10 @@ function checkKeyPress(event) {
 
   if(key === 70) {
     player = 1;
-    checkForSlapKey(player);
+    checkForSlapKey(player);//key f - playerOne slap
   } else if(key === 74) {
     player = 2;
-    checkForSlapKey(player);
+    checkForSlapKey(player);//key j - playerTwo slap
   }
 
   checkForDealKey(key);
@@ -30,16 +30,16 @@ function checkKeyPress(event) {
 
 
 function checkForSlapKey(player) {
-  if (getHandLength(player) === 0) {//key f - playerOne slap
+  if (getHandLength(player) === 0) {
     if (game.slapAtEndGame()) {
       game.winCentralPile(player)
     } else {
       console.log('game over') //add function here that ends game
     }
-  } else {//key f - playerOne slap
+  } else {
     if (game.slap()) {
-      game.winCentralPile(player); //take middle cards and shuffle them into deck
       checkForJackSlapAtEnd(player);//check if jack slap and other play loses
+      game.winCentralPile(player); //take middle cards and shuffle them into deck
     } else {
       game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
