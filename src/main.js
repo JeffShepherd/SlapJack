@@ -1,5 +1,13 @@
 var game = new Game();
 
+////check for end conditions:
+//condition: solved: if it's a good slap of jack and other player has 0 cards: game win
+//condition: solved: bad slap by losing player is game win
+//condition: solved: losing player can only slap jack
+//condition: solved: if one player has zero cards, and the other runs out, winner gets central pile
+
+
+
 window.addEventListener('load', loadGame);
 document.addEventListener('keydown', function(event) {
   checkKeyPress(event);
@@ -39,14 +47,6 @@ function checkForSlapKey(player) {
 }
 
 
-// function checkForEndScenario()
-////check for end conditions ( both players have 0 and winning player slaps jack and gets full shuffled deck)
-//other condition: solved: if it's a good slap of jack and other player has 0 cards: game win
-//other condition: solved: bad slap by losing player is game win
-//other condition:
-//losing player can only slap jack
-//pass in player
-
 function checkForJackSlapAtEnd(player) {
    if (player === 1 && game.centralPile[0].includes('jack') && getHandLength(2) === 0) {
      console.log('game over player One wins'); //add function here that ends game
@@ -57,21 +57,35 @@ function checkForJackSlapAtEnd(player) {
 
 
 function checkForDealKey(key) {
-  checkForEndScenario();
+  // checkForEndScenario();//take out as could be issue?
   if (key === 81 && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
     game.playerTurn = 2; //change player turn
+    giveWinningPlayerDeckBack(1);//give deck back to player if they are winning and out of cards
   } else if (key === 80 && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
     game.moveCardToMiddle(); //move playerTwo top card to middle
     game.playerTurn = 1; //change player turn
-  } else {
-    console.log('wrong key pressed') //invalid key (remove after testing)
+    giveWinningPlayerDeckBack(2);//give deck back to player if they are winning and out of cards
+  } else if(key === 81 || key === 80){
+    console.log('it is not your turn') //invalid key (remove after testing)
   }
   checkForEndScenario()
 }
 
+function giveWinningPlayerDeckBack(player) {//give deck back to player if they are winning and out of cards
+  if(getHandLength(1) !== 0 || getHandLength(2) !== 0) {
+    return;
+  }
+
+  if(player === 1) {
+    winCentralPile(1);//shuffle middle deck and give to player1 if player2 has no
+  } else if(player === 2) {
+    winCentralPile(2);//shuffle middle deck and give to player
+  }
+}
+
+
 function checkForEndScenario() {
-  if(game.)
   if (getHandLength(1) === 0) {
     game.playerTurn = 2;
   } else if (getHandLength(2) === 0) {
@@ -79,7 +93,7 @@ function checkForEndScenario() {
   }
 }
 
-getHandLength(player) {
+function getHandLength(player) {
   if(player === 1) {
     return game.playerOne.hand.length
   } else if(player === 2) {
