@@ -17,7 +17,6 @@ document.addEventListener('keydown', function(event) {
 function checkKeyPress(event) {
   var key = event.keyCode;
   var player;
-
   if (key === 70) {
     player = 1;
     checkForSlapKey(player); //key f - playerOne slap
@@ -25,7 +24,6 @@ function checkKeyPress(event) {
     player = 2;
     checkForSlapKey(player); //key j - playerTwo slap
   }
-
   checkForDealKey(key);
 }
 
@@ -41,6 +39,7 @@ function checkForSlapKey(player) {
     if (game.slap()) {
       checkForJackSlapAtEnd(player); //check if jack slap and other play loses
       game.winCentralPile(player); //take middle cards and shuffle them into deck
+      // updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`);
     } else {
       game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
     }
@@ -111,6 +110,12 @@ function loadGame() {
 
 
 //DOM manipulating functions
+function updateDisplayAfterTurn(message) {
+  refreshCardImages();
+  displayHeaderMessage(message);
+}
+
+
 function refreshCardImages() {
   updatePlayerPileImage(1, playerOnePile);
   updatePlayerPileImage(2, playerTwoPile);
