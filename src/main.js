@@ -107,3 +107,24 @@ function loadGame() {
   game.resetGame(); //resets central pile and repopulates fullDeck
   //update player wins from storage
 }
+
+
+//DOM manipulating functions
+function displayCardImages() {
+
+}
+
+
+function addClass(element, class) {
+  element.classList.add(className || "hidden");
+}
+
+function removeClass(element, class) {
+  element.classList.remove(className || "hidden");
+}
+
+
+
+// var playerOnePile = document.querySelector('#playerOnePile');
+// var centralPile = document.querySelector('#centralPile');
+// var playerTwoPile = document.querySelector('#playerTwoPile');
