@@ -110,9 +110,28 @@ function loadGame() {
 
 
 //DOM manipulating functions
-function displayCardImages() {
+function refreshCardImages() {
+  if(getHandLength(1) === 0) {
+    addClass(playerOnePile);
+  } else {
+    removeClass(playerOnePile);
+  }
 
+  if(getHandLength(2) === 0) {
+    addClass(playerTwoPile);
+  } else {
+    removeClass(playerTwoPile);
+  }
+
+  if(game.centralPile.length === 0) {
+    addClass(centralPile);
+  } else {
+    removeClass(centralPile);
+    playerOnePile.src = `assets/${game.centralPile[0]}.png`
+  }
 }
+
+
 
 
 function addClass(element, class) {
