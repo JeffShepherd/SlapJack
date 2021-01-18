@@ -19,21 +19,27 @@ document.addEventListener('keydown', function(event) {
 function checkKeyPress(event) {
   var key = event.key;
   var player;
-  if (key === 'f' || key === 'q') {
-    player = 1;
-  } else if (key === 'j' || key === 'p') {
-    player = 2;
+  if (key === 'f' || key === 'j') {
+    player = assignPlayer(key);
+    checkForSlapKey(player);
+  } else if (key === 'q' || key === 'p') {
+    player = assignPlayer(key);
+    checkForDealKey(key, player);
   } else {
-    return displayHeaderMessage(`Incorrect key pressed!`);
+    return displayHeaderMessage(`Invalid key pressed!`);
   }
-  checkForSlapKey(player); //key j - playerTwo slap
-  checkForDealKey(key, player);
   console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile)//remove after testing
 }
 
+function assignPlayer(key) {
+  if (key === 'f' || key === 'q') {
+    return 1;
+  } else if (key === 'j' || key === 'p') {
+    return 2;
+  }
+}
 
 function checkForSlapKey(player) {
-  console.log(player)//test = pass
   if (getHandLength(player) === 0) {//if player's hand length is 0
     if (game.slapAtEndGame()) {//check if top card in center is a jack
       game.winCentralPile(player)//player gets central pile
@@ -52,7 +58,6 @@ function checkForSlapKey(player) {
       updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`);//show header message
     }
   }
-  console.log(player)//test = pass
 }
 
 
@@ -68,7 +73,6 @@ function checkForJackSlapAtEnd(player) {
 
 
 function checkForDealKey(key, player) {
-  console.log(player, 'check for deal key')//test = failed
   if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
     game.playerTurn = 2; //change player turn
