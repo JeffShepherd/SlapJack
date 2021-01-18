@@ -1,12 +1,11 @@
 /* full document */
-html {
-  /* background-color: grey; */
-}
+
 body {
   margin: 0;
   text-align: center;
   background-image: url(https://images.theconversation.com/files/232349/original/file-20180816-2924-8o4zf5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop);
   background-size: cover;
+  font-family: 'Yusei Magic', sans-serif;
 }
 
 
@@ -42,8 +41,9 @@ img {
   margin-right: auto;
 }
 p {
-  position: sticky;
+
 }
+
 footer {
   height: 15vh;
 }
