@@ -3,7 +3,9 @@ var game = new Game();
 var playerOnePile = document.querySelector('#playerOnePile');
 var centralPile = document.querySelector('#centralPile');
 var playerTwoPile = document.querySelector('#playerTwoPile');
-var headerMessage = document.querySelector('#headerMessage')
+var headerMessage = document.querySelector('#headerMessage');
+var playerOneWins = document.querySelector('#playerOneWins');
+var playerTwoWins = document.querySelector('#playerTwoWins')
 
 
 //event listeners
@@ -158,7 +160,8 @@ function displayHeaderMessage(message) {
 }
 
 function updateWinCountDisplay() {
-
+  playerOneWins.innerText = `${game.playerOne.wins} Wins`
+  playerTwoWins.innerText = `${game.playerTwo.wins} Wins`
 }
 
 function addClass(element, className) {
