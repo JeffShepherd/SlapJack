@@ -25,6 +25,7 @@ function checkKeyPress(event) {
     checkForSlapKey(player); //key j - playerTwo slap
   }
   checkForDealKey(key, player);
+  console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile)//remove after testing
 }
 
 
@@ -60,18 +61,20 @@ function checkForJackSlapAtEnd(player) {
 }
 
 
-function checkForDealKey(key, player) {
+function checkForDealKey(key, playerID) {
   // checkForEndScenario();//take out as could be issue?
   if (key === 81 && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
     game.playerTurn = 2; //change player turn
     giveWinningPlayerDeckBack(1); //give deck back to player if they are winning and out of cards
+    refreshCardImages();
   } else if (key === 80 && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
     game.moveCardToMiddle(); //move playerTwo top card to middle
     game.playerTurn = 1; //change player turn
     giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
+    refreshCardImages()
   } else if (key === 81 || key === 80) {
-    displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`)
+    displayHeaderMessage(`Player${playerID} jumped the gun! It's not your turn!`)
   }
   checkForEndScenario()
 }
@@ -80,12 +83,12 @@ function giveWinningPlayerDeckBack(player) { //give deck back to player if they 
   if (getHandLength(1) !== 0 || getHandLength(2) !== 0) {
     return;
   }
-
   if (player === 1) {
-    winCentralPile(1); //shuffle middle deck and give to player1 if player2 has no
+    game.winCentralPile(1); //shuffle middle deck and give to player1 if player2 has no
   } else if (player === 2) {
-    winCentralPile(2); //shuffle middle deck and give to player
+    game.winCentralPile(2); //shuffle middle deck and give to player
   }
+
 }
 
 function checkForEndScenario() {
