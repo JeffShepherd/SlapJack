@@ -125,7 +125,7 @@ function getHandLength(player) {
 function loadGame() {
   game.resetGame(); //resets central pile and repopulates fullDeck
   refreshCardImages(); //update card images on DOM
-  //update player wins from storage
+  updateWinCountDisplay();//reset win count display to reflect current wins
 }
 
 function winGame(player) {
