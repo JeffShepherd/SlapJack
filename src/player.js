@@ -14,4 +14,10 @@ class Player {
     var wins = JSON.stringify(this.wins);
     localStorage.setItem(`player${this.id}`, wins);
   }
+
+  getWinsFromStorage() {
+    var savedData = localStorage.getItem(`player${this.id}`);
+    var wins = JSON.parse(savedData);
+    return wins;
+  }
 }
