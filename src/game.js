@@ -115,7 +115,7 @@ class Game {
 
   resetGame() {//tested and working
     this.playerOne.hand = [];
-    this.playerOne.hand = [];
+    this.playerTwo.hand = [];
     this.centralPile = [];
     this.playerTurn = 1;
     this.shuffleDeck(this.fullDeck);

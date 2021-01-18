@@ -45,12 +45,12 @@ function checkForSlapKey(player) {
       game.winCentralPile(player) //player gets central pile
       updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
     } else {
-      winGame(switchPlayer(player)) //console.log('game over') //add function here that ends game
+       winGame(switchPlayer(player));//console.log('opposing player wins, works for player 1 and 2')
     }
   } else {
     if (game.slap()) { //check for jack pair or sandwich
       if (checkForJackSlapAtEnd(player)) { //check if jack slap and other play loses if they have 0 cards (return out of function if true)
-        winGame(player); //console.log('game over player One wins')
+         winGame(player);//console.log('this player wins, works for player  1 and 2 ')
       } else {
         game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
         updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
