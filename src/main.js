@@ -26,7 +26,7 @@ function checkKeyPress(event) {
     player = assignPlayer(key);
     checkForDealKey(key, player);
   } else {
-    return displayHeaderMessage(`Invalid key pressed!`);
+    return displayHeaderMessage(`Invalid key pressed!`);//can remove turn and leave function call?
   }
   console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile) //remove after testing
 }
@@ -125,7 +125,7 @@ function getHandLength(player) {
 function loadGame() {
   game.resetGame(); //resets central pile and repopulates fullDeck
   refreshCardImages(); //update card images on DOM
-  //update player wins from storage
+  updateWinCountDisplay();//reset win count display to reflect current wins
 }
 
 function winGame(player) {
@@ -134,6 +134,7 @@ function winGame(player) {
   updateDisplayAfterTurn(`PLAYER${player} WINS!`);//refresh card images and show win message
   updateWinCountDisplay();//reset win count display to reflect current wins
 }
+
 
 
 //DOM manipulating functions

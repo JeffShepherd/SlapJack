@@ -1,7 +1,7 @@
 class Player {
   constructor(id) {
     this.id = id;
-    this.wins = 0;
+    this.wins = this.getWinsFromStorage() || 0;
     this.hand = [];
   }
 
@@ -13,5 +13,11 @@ class Player {
   saveWinsToStorage() {
     var wins = JSON.stringify(this.wins);
     localStorage.setItem(`player${this.id}`, wins);
+  }
+
+  getWinsFromStorage() {
+    var savedData = localStorage.getItem(`player${this.id}`);
+    var wins = JSON.parse(savedData);
+    return wins;
   }
 }
