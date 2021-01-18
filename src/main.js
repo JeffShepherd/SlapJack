@@ -24,7 +24,7 @@ function checkKeyPress(event) {
     player = 2;
     checkForSlapKey(player); //key j - playerTwo slap
   }
-  checkForDealKey(key);
+  checkForDealKey(key, player);
 }
 
 
@@ -60,7 +60,7 @@ function checkForJackSlapAtEnd(player) {
 }
 
 
-function checkForDealKey(key) {
+function checkForDealKey(key, player) {
   // checkForEndScenario();//take out as could be issue?
   if (key === 81 && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
@@ -71,7 +71,7 @@ function checkForDealKey(key) {
     game.playerTurn = 1; //change player turn
     giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
   } else if (key === 81 || key === 80) {
-    console.log('it is not your turn') //invalid key (remove after testing)
+    displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`)
   }
   checkForEndScenario()
 }
