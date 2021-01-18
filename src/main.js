@@ -19,13 +19,14 @@ document.addEventListener('keydown', function(event) {
 function checkKeyPress(event) {
   var key = event.key;
   var player;
-  if (key === 'f') {
+  if (key === 'f' || key === 'q') {
     player = 1;
-    checkForSlapKey(player); //key f - playerOne slap
-  } else if (key === 'j') {
+  } else if (key === 'j' || key === 'p') {
     player = 2;
-    checkForSlapKey(player); //key j - playerTwo slap
+  } else {
+    return displayHeaderMessage(`Incorrect key pressed!`);
   }
+  checkForSlapKey(player); //key j - playerTwo slap
   checkForDealKey(key, player);
   console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile)//remove after testing
 }
@@ -33,21 +34,22 @@ function checkKeyPress(event) {
 
 function checkForSlapKey(player) {
   console.log(player)//test = pass
-  if (getHandLength(player) === 0) {
-    if (game.slapAtEndGame()) {
-      game.winCentralPile(player)
+  if (getHandLength(player) === 0) {//if player's hand length is 0
+    if (game.slapAtEndGame()) {//check if top card in center is a jack
+      game.winCentralPile(player)//player gets central pile
       updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
     } else {
       console.log('game over') //add function here that ends game
     }
   } else {
-    if (game.slap()) {
-      checkForJackSlapAtEnd(player); //check if jack slap and other play loses
-      game.winCentralPile(player); //take middle cards and shuffle them into deck
-      updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`);
+    if (game.slap()) {//check for jack pair or sandwich
+      checkForJackSlapAtEnd(player); //check if jack slap and other play loses if they have 0 cards
+      game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
+      updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`);//show header message
     } else {
+      //add function to check if player's opponent has 0 cards so bad slap won't give card to losing player?
       game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
-      updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`);
+      updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`);//show header message
     }
   }
   console.log(player)//test = pass
@@ -66,7 +68,7 @@ function checkForJackSlapAtEnd(player) {
 
 
 function checkForDealKey(key, player) {
-  // console.log(player)//test = failed
+  console.log(player, 'check for deal key')//test = failed
   if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
     game.playerTurn = 2; //change player turn
@@ -76,16 +78,16 @@ function checkForDealKey(key, player) {
     game.moveCardToMiddle(); //move playerTwo top card to middle
     game.playerTurn = 1; //change player turn
     giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
-    refreshCardImages()
+    refreshCardImages();
   } else if (key === 'q' || key === 'p') {
     console.log(player)//test = failed
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
-  checkForEndScenario()
+  checkForEndScenario()//if one player has no cards, make sure it's the other's turn
 }
 
 function giveWinningPlayerDeckBack(player) { //give deck back to player if they are winning and out of cards
-  if (getHandLength(1) !== 0 || getHandLength(2) !== 0) {
+  if (getHandLength(1) !== 0 || getHandLength(2) !== 0) {//if either player has cards, exit function
     return;
   }
   if (player === 1) {
@@ -93,7 +95,6 @@ function giveWinningPlayerDeckBack(player) { //give deck back to player if they 
   } else if (player === 2) {
     game.winCentralPile(2); //shuffle middle deck and give to player
   }
-
 }
 
 function checkForEndScenario() {
