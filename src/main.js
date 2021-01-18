@@ -116,8 +116,11 @@ function loadGame() {
   //update player wins from storage
 }
 
-function winGame() {
-  game.resetGame()
+function winGame(player) {
+  game.resetGame();
+  game.updateWinCount(player);
+  updateDisplayAfterTurn(`PLAYER${player} WINS!`);
+  updateWinCountDisplay();
 }
 
 //DOM manipulating functions
@@ -152,6 +155,10 @@ function displayHeaderMessage(message) {
   setTimeout(function() {
     addClass(headerMessage);
   }, 7000)
+}
+
+function updateWinCountDisplay() {
+
 }
 
 function addClass(element, className) {
