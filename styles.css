@@ -18,7 +18,9 @@ header {
   align-items: center;
 }
 h4 {
-  padding: auto;
+  color: #fff;
+  font-size: 2em;
+  background-color: rgb(0, 0, 0, 0.9);
 }
 
 /* main card section */
