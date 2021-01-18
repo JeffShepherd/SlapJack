@@ -70,10 +70,8 @@ function switchPlayer(player) {
   }
 }
 
-function checkForJackSlapAtEnd(player) { //combine conditions and use switchPlayer method to get other player in hand length
-  if (player === 1 && game.centralPile[0].includes('jack') && getHandLength(2) === 0) {
-    return true;
-  } else if (player === 2 && game.centralPile[0].includes('jack') && getHandLength(1) === 0) {
+function checkForJackSlapAtEnd(player) {
+  if (game.centralPile[0].includes('jack') && getHandLength(switchPlayer(player)) === 0) {
     return true;
   }
 }
