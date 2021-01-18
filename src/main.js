@@ -30,6 +30,7 @@ function checkKeyPress(event) {
 
 
 function checkForSlapKey(player) {
+  console.log(player)//test = pass
   if (getHandLength(player) === 0) {
     if (game.slapAtEndGame()) {
       game.winCentralPile(player)
@@ -47,6 +48,7 @@ function checkForSlapKey(player) {
       updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`);
     }
   }
+  console.log(player)//test = pass
 }
 
 
@@ -61,8 +63,8 @@ function checkForJackSlapAtEnd(player) {
 }
 
 
-function checkForDealKey(key, playerID) {
-  // checkForEndScenario();//take out as could be issue?
+function checkForDealKey(key, player) {
+  // console.log(player)//test = failed
   if (key === 81 && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
     game.playerTurn = 2; //change player turn
@@ -74,7 +76,8 @@ function checkForDealKey(key, playerID) {
     giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
     refreshCardImages()
   } else if (key === 81 || key === 80) {
-    displayHeaderMessage(`Player${playerID} jumped the gun! It's not your turn!`)
+    console.log(player)//test = failed
+    displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
   checkForEndScenario()
 }
@@ -113,6 +116,9 @@ function loadGame() {
   //update player wins from storage
 }
 
+function winGame() {
+  game.resetGame()
+}
 
 //DOM manipulating functions
 function updateDisplayAfterTurn(message) {

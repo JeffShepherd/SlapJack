@@ -103,13 +103,13 @@ class Game {
   }
 
   updateWinCount(player) {//works but needs to be made dynamic
-    // if(player === 1) {
-    //   this.playerOne.wins++;
-    //   this.playerOne.saveWinsToStorage();
-    // } else {
-    //   this.playerTwo.wins++;
-    //   this.playerTwo.saveWinsToStorage();
-    // }
+    if(player === 1) {
+      this.playerOne.wins++;
+      // this.playerOne.saveWinsToStorage();
+    } else {
+      this.playerTwo.wins++;
+      // this.playerTwo.saveWinsToStorage();
+    }
 
   }
 
