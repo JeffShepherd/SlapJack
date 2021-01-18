@@ -43,7 +43,7 @@ img {
 /* left and right card section */
 
 /* center card section */
-#centralPile {
+.discard-pile {
   margin-bottom: 50px;
 }
 
