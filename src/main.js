@@ -15,14 +15,14 @@ document.addEventListener('keydown', function(event) {
 })
 
 
-//functions
+//functions: data manipulation and data/DOM manipulation
 function checkKeyPress(event) {
-  var key = event.keyCode;
+  var key = event.key;
   var player;
-  if (key === 70) {
+  if (key === 'f') {
     player = 1;
     checkForSlapKey(player); //key f - playerOne slap
-  } else if (key === 74) {
+  } else if (key === 'j') {
     player = 2;
     checkForSlapKey(player); //key j - playerTwo slap
   }
@@ -67,17 +67,17 @@ function checkForJackSlapAtEnd(player) {
 
 function checkForDealKey(key, player) {
   // console.log(player)//test = failed
-  if (key === 81 && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
+  if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
     game.playerTurn = 2; //change player turn
     giveWinningPlayerDeckBack(1); //give deck back to player if they are winning and out of cards
     refreshCardImages();
-  } else if (key === 80 && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
+  } else if (key === 'p' && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
     game.moveCardToMiddle(); //move playerTwo top card to middle
     game.playerTurn = 1; //change player turn
     giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
     refreshCardImages()
-  } else if (key === 81 || key === 80) {
+  } else if (key === 'q' || key === 'p') {
     console.log(player)//test = failed
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
@@ -124,6 +124,7 @@ function winGame(player) {
   updateDisplayAfterTurn(`PLAYER${player} WINS!`);
   updateWinCountDisplay();
 }
+
 
 //DOM manipulating functions
 function updateDisplayAfterTurn(message) {
