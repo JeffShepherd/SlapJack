@@ -32,6 +32,7 @@ function checkForSlapKey(player) {
   if (getHandLength(player) === 0) {
     if (game.slapAtEndGame()) {
       game.winCentralPile(player)
+      updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
     } else {
       console.log('game over') //add function here that ends game
     }
@@ -39,9 +40,10 @@ function checkForSlapKey(player) {
     if (game.slap()) {
       checkForJackSlapAtEnd(player); //check if jack slap and other play loses
       game.winCentralPile(player); //take middle cards and shuffle them into deck
-      // updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`);
+      updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`);
     } else {
       game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
+      updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`);
     }
   }
 }
