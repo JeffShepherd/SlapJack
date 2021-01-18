@@ -117,6 +117,7 @@ class Game {
     this.playerOne.hand = [];
     this.playerOne.hand = [];
     this.centralPile = [];
+    this.playerTurn = 1;
     this.shuffleDeck(this.fullDeck);
     this.dealFullDeck();
   }

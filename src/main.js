@@ -28,7 +28,7 @@ function checkKeyPress(event) {
   } else {
     return displayHeaderMessage(`Invalid key pressed!`);
   }
-  console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile)//remove after testing
+  console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile) //remove after testing
 }
 
 function assignPlayer(key) {
@@ -40,41 +40,41 @@ function assignPlayer(key) {
 }
 
 function checkForSlapKey(player) {
-  if (getHandLength(player) === 0) {//if player's hand length is 0
-    if (game.slapAtEndGame()) {//check if top card in center is a jack
-      game.winCentralPile(player)//player gets central pile
+  if (getHandLength(player) === 0) { //if player's hand length is 0
+    if (game.slapAtEndGame()) { //check if top card in center is a jack
+      game.winCentralPile(player) //player gets central pile
       updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
     } else {
-      winGame(switchPlayer(player))//console.log('game over') //add function here that ends game
+      winGame(switchPlayer(player)) //console.log('game over') //add function here that ends game
     }
   } else {
-    if (game.slap()) {//check for jack pair or sandwich
-      checkForJackSlapAtEnd(player); //check if jack slap and other play loses if they have 0 cards
-      game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
-      updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`);//show header message
+    if (game.slap()) { //check for jack pair or sandwich
+      if (checkForJackSlapAtEnd(player)) { //check if jack slap and other play loses if they have 0 cards (return out of function if true)
+        winGame(player); //console.log('game over player One wins')
+      } else {
+        game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
+        updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
+      }
     } else {
-      //add function to check if player's opponent has 0 cards so bad slap won't give card to losing player?
       game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
-      updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`);//show header message
+      updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`); //show header message
     }
   }
 }
 
 function switchPlayer(player) {
-  if(player === 1){
+  if (player === 1) {
     return 2;
-  } else if(player === 2) {
+  } else if (player === 2) {
     return 1;
   }
 }
 
-function checkForJackSlapAtEnd(player) {
+function checkForJackSlapAtEnd(player) { //combine conditions and use switchPlayer method to get other player in hand length
   if (player === 1 && game.centralPile[0].includes('jack') && getHandLength(2) === 0) {
-    console.log('game over player One wins'); //add function here that ends game
-    return
+    return true;
   } else if (player === 2 && game.centralPile[0].includes('jack') && getHandLength(1) === 0) {
-    console.log('game over player Two wins') //add function here that ends game
-    return
+    return true;
   }
 }
 
@@ -91,14 +91,14 @@ function checkForDealKey(key, player) {
     giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
     refreshCardImages();
   } else if (key === 'q' || key === 'p') {
-    console.log(player)//test = failed
+    console.log(player) //test = failed
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
-  checkForEndScenario()//if one player has no cards, make sure it's the other's turn
+  checkForEndScenario() //if one player has no cards, make sure it's the other's turn
 }
 
 function giveWinningPlayerDeckBack(player) { //give deck back to player if they are winning and out of cards
-  if (getHandLength(1) !== 0 || getHandLength(2) !== 0) {//if either player has cards, exit function
+  if (getHandLength(1) !== 0 || getHandLength(2) !== 0) { //if either player has cards, exit function
     return;
   }
   if (player === 1) {
@@ -131,10 +131,10 @@ function loadGame() {
 }
 
 function winGame(player) {
-  game.resetGame();
-  game.updateWinCount(player);
-  updateDisplayAfterTurn(`PLAYER${player} WINS!`);
-  updateWinCountDisplay();
+  game.resetGame();//sets p1 p2 and central pile to [], then shuffles and deals full deck
+  game.updateWinCount(player);//adds 1 to winning player's win count
+  updateDisplayAfterTurn(`PLAYER${player} WINS!`);//refresh card images and show win message
+  updateWinCountDisplay();//reset win count display to reflect current wins
 }
 
 
@@ -144,6 +144,10 @@ function updateDisplayAfterTurn(message) {
   displayHeaderMessage(message);
 }
 
+function updateWinCountDisplay() {
+  playerOneWins.innerText = `${game.playerOne.wins} Wins`
+  playerTwoWins.innerText = `${game.playerTwo.wins} Wins`
+}
 
 function refreshCardImages() {
   updatePlayerPileImage(1, playerOnePile);
@@ -170,11 +174,6 @@ function displayHeaderMessage(message) {
   setTimeout(function() {
     addClass(headerMessage);
   }, 7000)
-}
-
-function updateWinCountDisplay() {
-  playerOneWins.innerText = `${game.playerOne.wins} Wins`
-  playerTwoWins.innerText = `${game.playerTwo.wins} Wins`
 }
 
 function addClass(element, className) {
