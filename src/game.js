@@ -75,22 +75,7 @@ class Game {
       return false;
   }
 }
-  // slap() {
-  //   if(this.centralPile.length === 0) {
-  //     return false;
-  //   }
-  //   var evaluation = this.createRecentCards();
-  //
-  //   if (evaluation[0] === 'k') {//check for jack
-  //     return true;
-  //   } else if (evaluation.length > 1 && evaluation[0] === evaluation[1]) {//check for pair
-  //     return true;
-  //   } else if (evaluation.length > 2 && evaluation[0] === evaluation[2]) {//check for sandwich
-  //     return true;
-  //   } else {//return false if it's a bad slap
-  //     return false;
-  //   }
-  // }
+
   checkForJack(cardsToEvaluate) {
     if(cardsToEvaluate[0] === 'k') {
       return true;
@@ -117,15 +102,22 @@ class Game {
     }
   }
 
-  updateWinCount() {//works but needs to be made dynamic
-    this.playerOne.wins++;
-    this.playerOne.saveWinsToStorage();
+  updateWinCount(player) {//works but needs to be made dynamic
+    if(player === 1) {
+      this.playerOne.wins++;
+      // this.playerOne.saveWinsToStorage();
+    } else {
+      this.playerTwo.wins++;
+      // this.playerTwo.saveWinsToStorage();
+    }
+
   }
 
   resetGame() {//tested and working
     this.playerOne.hand = [];
-    this.playerOne.hand = [];
+    this.playerTwo.hand = [];
     this.centralPile = [];
+    this.playerTurn = 1;
     this.shuffleDeck(this.fullDeck);
     this.dealFullDeck();
   }
