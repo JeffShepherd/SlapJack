@@ -45,7 +45,7 @@ function checkForSlapKey(player) {
       game.winCentralPile(player)//player gets central pile
       updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
     } else {
-      console.log('game over') //add function here that ends game
+      winGame(switchPlayer(player))//console.log('game over') //add function here that ends game
     }
   } else {
     if (game.slap()) {//check for jack pair or sandwich
@@ -60,6 +60,13 @@ function checkForSlapKey(player) {
   }
 }
 
+function switchPlayer(player) {
+  if(player === 1){
+    return 2;
+  } else if(player === 2) {
+    return 1;
+  }
+}
 
 function checkForJackSlapAtEnd(player) {
   if (player === 1 && game.centralPile[0].includes('jack') && getHandLength(2) === 0) {
