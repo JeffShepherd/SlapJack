@@ -38,9 +38,11 @@ section {
 img {
   height: 250px;
   width: 175px;
-  border: 2px solid;
+  border: 1px solid grey;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 0 0 30px 10px gold;
+  border-radius: 3%;
 }
 p {
   width: 175px;
@@ -54,8 +56,8 @@ footer {
 }
 
 .image-placeholder {
-  height: 254px;
-  width: 179px;
+  height: 252px;
+  width: 177px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -64,7 +66,8 @@ footer {
 
 /* center card section */
 .discard-pile {
-  margin-bottom: 50px;
+  margin-bottom: 55px;
+  box-shadow: 0 0 30px 10px red;
 }
 
 
