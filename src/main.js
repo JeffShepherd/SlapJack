@@ -5,15 +5,13 @@ var centralPile = document.querySelector('#centralPile');
 var playerTwoPile = document.querySelector('#playerTwoPile');
 var headerMessage = document.querySelector('#headerMessage');
 var playerOneWins = document.querySelector('#playerOneWins');
-var playerTwoWins = document.querySelector('#playerTwoWins')
-
+var playerTwoWins = document.querySelector('#playerTwoWins');
 
 //event listeners
 window.addEventListener('load', loadGame);
 document.addEventListener('keydown', function(event) {
   checkKeyPress(event);
-})
-
+});
 
 //functions: data manipulation and data/DOM manipulation
 function checkKeyPress(event) {
@@ -26,7 +24,7 @@ function checkKeyPress(event) {
     player = assignPlayer(key);
     checkForDealKey(key, player);
   } else {
-    return displayHeaderMessage(`Invalid key pressed!`);//can remove turn and leave function call?
+    return displayHeaderMessage(`Invalid key pressed!`); //can remove turn and leave function call?
   }
   console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile) //remove after testing
 }
@@ -45,12 +43,12 @@ function checkForSlapKey(player) {
       game.winCentralPile(player) //player gets central pile
       updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
     } else {
-       winGame(switchPlayer(player));//console.log('opposing player wins, works for player 1 and 2')
+      winGame(switchPlayer(player)); //console.log('opposing player wins, works for player 1 and 2')
     }
   } else {
     if (game.slap()) { //check for jack pair or sandwich
       if (checkForJackSlapAtEnd(player)) { //check if jack slap and other play loses if they have 0 cards (return out of function if true)
-         winGame(player);//console.log('this player wins, works for player  1 and 2 ')
+        winGame(player); //console.log('this player wins, works for player  1 and 2 ')
       } else {
         game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
         updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
@@ -75,7 +73,6 @@ function checkForJackSlapAtEnd(player) {
     return true;
   }
 }
-
 
 function checkForDealKey(key, player) {
   if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
@@ -125,17 +122,15 @@ function getHandLength(player) {
 function loadGame() {
   game.resetGame(); //resets central pile and repopulates fullDeck
   refreshCardImages(); //update card images on DOM
-  updateWinCountDisplay();//reset win count display to reflect current wins
+  updateWinCountDisplay(); //reset win count display to reflect current wins
 }
 
 function winGame(player) {
-  game.resetGame();//sets p1 p2 and central pile to [], then shuffles and deals full deck
-  game.updateWinCount(player);//adds 1 to winning player's win count
-  updateDisplayAfterTurn(`PLAYER${player} WINS!`);//refresh card images and show win message
-  updateWinCountDisplay();//reset win count display to reflect current wins
+  game.resetGame(); //sets p1 p2 and central pile to [], then shuffles and deals full deck
+  game.updateWinCount(player); //adds 1 to winning player's win count
+  updateDisplayAfterTurn(`PLAYER${player} WINS!`); //refresh card images and show win message
+  updateWinCountDisplay(); //reset win count display to reflect current wins
 }
-
-
 
 //DOM manipulating functions
 function updateDisplayAfterTurn(message) {
