@@ -32,15 +32,13 @@ main {
 section {
   width: 205px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
 }
 
 .card-image {
   height: 250px;
   width: 175px;
-  margin-left: auto;
-  margin-right: auto;
   border: 1px solid grey;
   box-shadow: 0 0 30px 10px gold;
   border-radius: 3%;
@@ -49,8 +47,6 @@ section {
 .image-placeholder {
   height: 252px;
   width: 177px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .discard-pile {
@@ -60,16 +56,14 @@ section {
 
 p {
   width: 175px;
-  margin-left: auto;
-  margin-right: auto;
   background-color: #fff;
+  border-radius: 3px;
 }
 
-/* .space-evenly {
+.space-evenly {
   margin-left: auto;
   margin-right: auto;
-} */
-
+}
 
 /* footer */
 footer {
