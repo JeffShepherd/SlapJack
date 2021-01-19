@@ -40,7 +40,7 @@ $ git clone git@github.com:JeffShepherd/SlapJack.git
 
 #### Challenges
   - I lost a lot of time (estimated half or full day) trying to solve for logic that wasn't correct. Whether it was my misinterpretation, or ambiguity of the instructions, I was writing code to solve for incorrect logic. In future projects, I will be sure to spend more time up front scrutinizing small project details.
-  - I am relatively unexperienced with animation, so it took a lot of time to have the UFO glide accross the header. Ultimately, I am happy I spent the time doing this, as I learned a lot about animation.
+  - I am relatively inexperienced with animation, so it took a lot of time to have the UFO glide accross the header. Ultimately, I am happy I spent the time doing this, as I learned a lot about animation.
   - 
 
 #### Other Reflections
