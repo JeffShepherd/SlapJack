@@ -50,17 +50,20 @@ function checkForSlapKey(player) {
       if (game.centralPile[0].includes('jack') && getHandLength(switchPlayer(player)) === 0) { //win if jack on top and opp has 0 cards
         winGame(player);
       } else if (getHandLength(switchPlayer(player)) === 0){
-        game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
-        updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`); //show header message
+        updateOnBadSlap(player);
       } else {
         game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
         updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
       }
     } else {
-      game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
-      updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`); //show header message
+      updateOnBadSlap(player);
     }
   }
+};
+
+function updateOnBadSlap(player) {
+  game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
+  updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`); //show header message
 };
 
 function switchPlayer(player) {
