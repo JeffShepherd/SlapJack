@@ -11,7 +11,7 @@ class Game {
     ];
   };
 
-  shuffleDeck(deck) { //tested and working
+  shuffleDeck(deck) {
     for (var x = deck.length - 1; x > 0; x--) {
       var randomIndex = Math.floor(Math.random() * x);
       var currentIndex = deck[x];
@@ -31,7 +31,7 @@ class Game {
     this.centralPile = [];
   };
 
-  dealFullDeck() { //tested and working
+  dealFullDeck() {
     var counter = 0;
     for (var i = 0; i < this.fullDeck.length; i++)
       if (counter === 0) {
@@ -43,7 +43,7 @@ class Game {
       }
   };
 
-  moveCardToMiddle() { //tested and working
+  moveCardToMiddle() {
     if (this.playerTurn === 1) {
       this.centralPile.unshift(this.playerOne.playCard());
     } else {
@@ -101,7 +101,7 @@ class Game {
     }
   };
 
-  createRecentCards() { //tested and working
+  createRecentCards() {
     var recentCards = [];
     for (var i = 0; i < this.centralPile.length; i++) {
       var splitCard = this.centralPile[i].split('');
@@ -112,7 +112,7 @@ class Game {
     }
   };
 
-  updateWinCount(player) { //works but needs to be made dynamic
+  updateWinCount(player) {
     if (player === 1) {
       this.playerOne.wins++;
       this.playerOne.saveWinsToStorage();
@@ -122,7 +122,7 @@ class Game {
     }
   };
 
-  resetGame() { //tested and working
+  resetGame() {
     this.playerOne.hand = [];
     this.playerTwo.hand = [];
     this.centralPile = [];

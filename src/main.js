@@ -24,7 +24,7 @@ function checkKeyPress(event) {
     player = assignPlayer(key);
     checkForDealKey(key, player);
   } else {
-    return displayHeaderMessage(`Invalid key pressed!`); //can remove turn and leave function call?
+    displayHeaderMessage(`Invalid key pressed!`);
   }
   console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile) //remove after testing
 };
@@ -43,12 +43,12 @@ function checkForSlapKey(player) {
       game.winCentralPile(player); //player gets central pile
       updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
     } else {
-      winGame(switchPlayer(player)); //console.log('opposing player wins, works for player 1 and 2')
+      winGame(switchPlayer(player));
     }
   } else {
     if (game.slap()) { //check for jack pair or sandwich
       if (checkForJackSlapAtEnd(player)) { //check if jack slap and other play loses if they have 0 cards (return out of function if true)
-        winGame(player); //console.log('this player wins, works for player  1 and 2 ')
+        winGame(player);
       } else {
         game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
         updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
@@ -86,7 +86,6 @@ function checkForDealKey(key, player) {//refactor opportunity
     giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
     refreshCardImages();
   } else if (key === 'q' || key === 'p') {
-    console.log(player) //test = failed
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
   checkForEndScenario(); //if one player has no cards, make sure it's the other's turn
