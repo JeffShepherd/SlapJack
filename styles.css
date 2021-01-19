@@ -82,7 +82,6 @@ footer {
   display: block;
   position: absolute;
   top: 0;
-  /* x-transition: all 1s ease-in-out; */
   animation: animate 30s infinite;
   z-index: -1;
 }
@@ -91,11 +90,9 @@ footer {
   0% {
     left: 5vw;
   }
-
   50% {
     left: 90vw;
   }
-
   100% {
     left: 5vw;
   }
