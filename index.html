@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title>SlapJack</title>
-  <link rel="stylesheet" href="./styles.css">
-</head>
-
-<body>
-
-  <header>
-    <h4 id="headerMessage"></h3>
-  </header>
-
-  <main>
-
-    <section>
-      <img id="playerOnePile" src="assets/back.png" alt="player one card image">
-      <p id="playerOneWins">0 Wins</p>
-    </section>
-
-    <section>
-      <img class="hidden" id="centralPile" src="assets/blue-01.png" alt="player two card image">
-    </section>
-
-    <section>
-      <img id="playerTwoPile" src="assets/back.png" alt="card image">
-      <p id="playerTwoWins">0 Wins</p>
-    </section>
-
-  </main>
-
-</body>
-<script type="text/javascript" src="./src/player.js"></script>
-<script type="text/javascript" src="./src/game.js"></script>
-<script type="text/javascript" src="./src/main.js"></script>
-
+  <head>
+    <meta charset="utf-8">
+    <title>SlapJack</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header>
+      <h4 id="headerMessage"></h4>
+      <img class="alien-image" src="assets/alien.png" alt="alien spacecraft">
+    </header>
+    <main>
+      <section>
+        <div class="image-placeholder space-evenly">
+          <img class="card-image space-evenly" id="playerOnePile" src="assets/back.png" alt="player one card back">
+        </div>
+        <p class="space-evenly" id="playerOneWins">0 Wins</p>
+      </section>
+      <section>
+        <img class="card-image space-evenly discard-pile hidden" id="centralPile" src="assets/blue-01.png" alt="player two card back">
+      </section>
+      <section>
+        <div class="image-placeholder space-evenly">
+          <img class="card-image space-evenly" id="playerTwoPile" src="assets/back.png" alt="card image">
+        </div>
+        <p class="space-evenly" id="playerTwoWins">0 Wins</p>
+      </section>
+    </main>
+    <footer>
+    </footer>
+  </body>
+  <script type="text/javascript" src="./src/player.js"></script>
+  <script type="text/javascript" src="./src/game.js"></script>
+  <script type="text/javascript" src="./src/main.js"></script>
 </html>

@@ -1,12 +1,11 @@
 /* full document */
-html {
-  background-color: grey;
-}
 body {
   margin: 0;
   text-align: center;
+  background-image: url(https://images.theconversation.com/files/232349/original/file-20180816-2924-8o4zf5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1356&h=668&fit=crop);
+  background-size: cover;
+  font-family: 'Yusei Magic', sans-serif;
 }
-
 
 /* header */
 header {
@@ -16,8 +15,11 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 h4 {
-  padding: auto;
+  color: #fff;
+  font-size: 2em;
+  background-color: rgb(0, 0, 0, 0.9);
 }
 
 /* main card section */
@@ -26,29 +28,72 @@ main {
   display: flex;
   justify-content: space-around;
 }
+
 section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   width: 205px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
-img {
+
+.card-image {
   height: 250px;
   width: 175px;
-  border: 2px solid;
+  border: 1px solid grey;
+  box-shadow: 0 0 30px 10px gold;
+  border-radius: 3%;
+}
+
+.image-placeholder {
+  height: 252px;
+  width: 177px;
+}
+
+.discard-pile {
+  margin-bottom: 55px;
+  box-shadow: 0 0 30px 10px red;
+}
+
+p {
+  width: 175px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.space-evenly {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* left and right card section */
-
-/* center card section */
-#centralPile {
-  margin-bottom: 50px;
+/* footer */
+footer {
+  height: 15vh;
 }
-
 
 /* other */
 .hidden {
   display: none;
+}
+
+/* z-index used below to ensure animation does not block a pop-up message */
+.alien-image {
+  height: 100px;
+  width: 100px;
+  display: block;
+  position: absolute;
+  top: 0;
+  animation: animate 30s infinite;
+  z-index: -1;
+}
+
+@keyframes animate {
+  0% {
+    left: 5vw;
+  }
+  50% {
+    left: 90vw;
+  }
+  100% {
+    left: 5vw;
+  }
 }
