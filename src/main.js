@@ -74,7 +74,7 @@ function checkForJackSlapAtEnd(player) {
   }
 }
 
-function checkForDealKey(key, player) {
+function checkForDealKey(key, player) {//refactor opportunity
   if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     game.moveCardToMiddle(); //move playerOne top card to middle
     game.playerTurn = 2; //change player turn

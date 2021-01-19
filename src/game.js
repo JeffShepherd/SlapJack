@@ -9,7 +9,7 @@ class Game {
       'green-01', 'green-02', 'green-03', 'green-04', 'green-05', 'green-06', 'green-07', 'green-08', 'green-09', 'green-10', 'green-jack', 'green-queen', 'green-king',
       'red-01', 'red-02', 'red-03', 'red-04', 'red-05', 'red-06', 'red-07', 'red-08', 'red-09', 'red-10', 'red-jack', 'red-queen', 'red-king'
     ];
-  }
+  };
 
   shuffleDeck(deck) { //tested and working
     for (var x = deck.length - 1; x > 0; x--) {
@@ -18,18 +18,18 @@ class Game {
       deck[x] = deck[random];
       deck[random] = temp;
     }
-  }
-  
+  };
+
   winCentralPile(player) {
     if (player === 1) {
       this.playerOne.hand = (this.playerOne.hand.concat(this.centralPile));
-      this.shuffleDeck(this.playerOne.hand)
+      this.shuffleDeck(this.playerOne.hand);
     } else {
       this.playerTwo.hand = (this.playerTwo.hand.concat(this.centralPile));
-      this.shuffleDeck(this.playerTwo.hand)
+      this.shuffleDeck(this.playerTwo.hand);
     }
     this.centralPile = [];
-  }
+  };
 
   dealFullDeck() { //tested and working
     var counter = 0;
@@ -41,7 +41,7 @@ class Game {
         this.playerTwo.hand.unshift(this.fullDeck[i]);
         counter--;
       }
-  }
+  };
 
   moveCardToMiddle() { //tested and working
     if (this.playerTurn === 1) {
@@ -49,7 +49,7 @@ class Game {
     } else {
       this.centralPile.unshift(this.playerTwo.playCard());
     }
-  }
+  };
 
   punishBadSlap(player) {
     if (player === 1) {
@@ -57,7 +57,7 @@ class Game {
     } else {
       this.playerOne.hand.push(this.playerTwo.playCard());
     }
-  }
+  };
 
   slap() {
     if (this.centralPile.length === 0) {
@@ -69,7 +69,7 @@ class Game {
     } else {
       return false;
     }
-  }
+  };
 
   slapAtEndGame() {
     if (this.centralPile.length === 0) {
@@ -81,36 +81,36 @@ class Game {
     } else {
       return false;
     }
-  }
+  };
 
   checkForJack(cardsToEvaluate) {
     if (cardsToEvaluate[0] === 'k') {
       return true;
     }
-  }
+  };
 
   checkForPair(cardsToEvaluate) {
     if (cardsToEvaluate.length > 1 && cardsToEvaluate[0] === cardsToEvaluate[1]) {
       return true;
     }
-  }
+  };
 
   checkForSandwich(cardsToEvaluate) {
     if (cardsToEvaluate.length > 2 && cardsToEvaluate[0] === cardsToEvaluate[2]) {
       return true;
     }
-  }
+  };
 
   createRecentCards() { //tested and working
     var recentCards = [];
     for (var i = 0; i < this.centralPile.length; i++) {
       var splitCard = this.centralPile[i].split('');
-      recentCards.push(splitCard[splitCard.length - 1])
+      recentCards.push(splitCard[splitCard.length - 1]);
       if (recentCards.length === 3 || this.centralPile.length === recentCards.length) {
         return recentCards;
       }
     }
-  }
+  };
 
   updateWinCount(player) { //works but needs to be made dynamic
     if (player === 1) {
@@ -120,7 +120,7 @@ class Game {
       this.playerTwo.wins++;
       this.playerTwo.saveWinsToStorage();
     }
-  }
+  };
 
   resetGame() { //tested and working
     this.playerOne.hand = [];
@@ -130,4 +130,4 @@ class Game {
     this.shuffleDeck(this.fullDeck);
     this.dealFullDeck();
   }
-}
+};
