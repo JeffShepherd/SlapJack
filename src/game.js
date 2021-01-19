@@ -13,10 +13,10 @@ class Game {
 
   shuffleDeck(deck) { //tested and working
     for (var x = deck.length - 1; x > 0; x--) {
-      var random = Math.floor(Math.random() * x);
-      var temp = deck[x];
-      deck[x] = deck[random];
-      deck[random] = temp;
+      var randomIndex = Math.floor(Math.random() * x);
+      var currentIndex = deck[x];
+      deck[x] = deck[randomIndex];
+      deck[randomIndex] = currentIndex;
     }
   };
 
