@@ -47,8 +47,11 @@ function checkForSlapKey(player) {
     }
   } else {
     if (game.slap()) { //check for jack pair or sandwich
-      if (checkForJackSlapAtEnd(player)) { //check if jack slap and other play loses if they have 0 cards (return out of function if true)
+      if (game.centralPile[0].includes('jack') && getHandLength(switchPlayer(player)) === 0) { //win if jack on top and opp has 0 cards
         winGame(player);
+      } else if (getHandLength(switchPlayer(player)) === 0){
+        game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
+        updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`); //show header message
       } else {
         game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
         updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
@@ -65,12 +68,6 @@ function switchPlayer(player) {
     return 2;
   } else if (player === 2) {
     return 1;
-  }
-};
-
-function checkForJackSlapAtEnd(player) {
-  if (game.centralPile[0].includes('jack') && getHandLength(switchPlayer(player)) === 0) {
-    return true;
   }
 };
 
