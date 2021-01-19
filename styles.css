@@ -35,7 +35,7 @@ section {
   justify-content: center;
   width: 205px;
 }
-img {
+.card-image {
   height: 250px;
   width: 175px;
   border: 1px solid grey;
@@ -74,4 +74,30 @@ footer {
 /* other */
 .hidden {
   display: none;
+}
+
+
+/* animations */
+/* z-index used below to ensure animation does not block a pop-up message */
+.alien-image {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  display: block;
+  top: 0;
+  /* x-transition: all 1s ease-in-out; */
+  animation: animate 30s infinite;
+  z-index: -1;
+}
+
+@keyframes animate {
+  0% {
+    left: 5vw;
+  }
+  50% {
+    left: 90vw;
+  }
+  100% {
+    left: 5vw;
+  }
 }
