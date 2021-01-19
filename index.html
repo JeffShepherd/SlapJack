@@ -1,49 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title>SlapJack</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-</head>
-
-<body>
-
-  <header>
-    <h4 id="headerMessage"></h3>
-  </header>
-
-  <main>
-
-    <section>
-      <div class="image-placeholder">
-        <img id="playerOnePile" src="assets/back.png" alt="player one card image">
-      </div>
-      <p id="playerOneWins">0 Wins</p>
-    </section>
-
-    <section>
-      <img class="discard-pile hidden" id="centralPile" src="assets/blue-01.png" alt="player two card image">
-    </section>
-
-    <section>
-      <div class="image-placeholder">
-        <img id="playerTwoPile" src="assets/back.png" alt="card image">
-      </div>
-      <p id="playerTwoWins">0 Wins</p>
-    </section>
-
-  </main>
-
-  <footer>
-
-  </footer>
-
-</body>
-<script type="text/javascript" src="./src/player.js"></script>
-<script type="text/javascript" src="./src/game.js"></script>
-<script type="text/javascript" src="./src/main.js"></script>
-
+  <head>
+    <meta charset="utf-8">
+    <title>SlapJack</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header>
+      <h4 id="headerMessage">
+        </h3>
+    </header>
+    <main>
+      <section>
+        <div class="image-placeholder">
+          <img id="playerOnePile" src="assets/back.png" alt="player one card image">
+        </div>
+        <p id="playerOneWins">0 Wins</p>
+      </section>
+      <section>
+        <img class="discard-pile hidden" id="centralPile" src="assets/blue-01.png" alt="player two card image">
+      </section>
+      <section>
+        <div class="image-placeholder">
+          <img id="playerTwoPile" src="assets/back.png" alt="card image">
+        </div>
+        <p id="playerTwoWins">0 Wins</p>
+      </section>
+    </main>
+    <footer>
+    </footer>
+  </body>
+  <script type="text/javascript" src="./src/player.js"></script>
+  <script type="text/javascript" src="./src/game.js"></script>
+  <script type="text/javascript" src="./src/main.js"></script>
 </html>
