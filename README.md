@@ -19,7 +19,7 @@ $ git clone git@github.com:JeffShepherd/SlapJack.git
 ```
 
 
-![Winner winner chicken dinner](./assets/readme-images/winner.png)
+![screenshot](./assets/screenshot.png)
 
 
 ## Learning Goals
