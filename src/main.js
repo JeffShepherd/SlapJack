@@ -23,7 +23,6 @@ function checkKeyPress(event) {
   } else {
     displayHeaderMessage(`Invalid key pressed!`);
   }
-  console.log(game.playerOne.hand, game.playerTwo.hand, game.centralPile) //remove after testing
 };
 
 function assignPlayer(key) {
@@ -35,7 +34,7 @@ function assignPlayer(key) {
 };
 
 function validateSlap(player) {
-  if (getHandLength(player) === 0) { //if player's hand length is 0
+  if (getHandLength(player) === 0) {
     slapIfPlayerHasZero(player);
   } else {
     slapIfBothHaveCards(player);
@@ -43,8 +42,8 @@ function validateSlap(player) {
 };
 
 function slapIfPlayerHasZero(player) {
-  if (game.slapAtEndGame()) { //check if top card in center is a jack
-    game.winCentralPile(player); //player gets central pile
+  if (game.slapAtEndGame()) {
+    game.winCentralPile(player);
     updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
   } else {
     winGame(switchPlayer(player));
@@ -52,14 +51,14 @@ function slapIfPlayerHasZero(player) {
 };
 
 function slapIfBothHaveCards(player) {
-  if (game.slap()) { //check for jack pair or sandwich
-    if (game.centralPile[0].includes('jack') && getHandLength(switchPlayer(player)) === 0) { //win if jack on top and opp has 0 cards
+  if (game.slap()) {
+    if (game.centralPile[0].includes('jack') && getHandLength(switchPlayer(player)) === 0) {
       winGame(player);
     } else if (getHandLength(switchPlayer(player)) === 0) {
       updateOnBadSlap(player);
     } else {
-      game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
-      updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
+      game.winCentralPile(player);
+      updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`);
     }
   } else {
     updateOnBadSlap(player);
@@ -67,8 +66,8 @@ function slapIfBothHaveCards(player) {
 };
 
 function updateOnBadSlap(player) {
-  game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
-  updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`); //show header message
+  game.punishBadSlap(player);
+  updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`);
 };
 
 function switchPlayer(player) {
@@ -79,15 +78,15 @@ function switchPlayer(player) {
   }
 };
 
-function validateDeal(key, player) { //refactor opportunity
-  if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
+function validateDeal(key, player) {
+  if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) {
     dealCard(player);
-  } else if (key === 'p' && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
+  } else if (key === 'p' && game.playerTurn === 2 && getHandLength(2) > 0) {
     dealCard(player);
   } else {
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
-  switchTurnsAtEnd(); //if one player has no cards, make sure it's the other's turn
+  switchTurnsAtEnd();
 };
 
 function dealCard(player) {
