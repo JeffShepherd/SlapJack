@@ -1,4 +1,4 @@
-/* body */
+/* full body */
 body {
   margin: 0;
   text-align: center;
@@ -7,7 +7,7 @@ body {
   font-family: 'Yusei Magic', sans-serif;
 }
 
-/* header */
+/* header area*/
 header {
   height: 15vh;
   margin: auto;
@@ -22,7 +22,7 @@ h4 {
   background-color: rgb(0, 0, 0, 0.9);
 }
 
-/* main card section */
+/* main card area */
 main {
   height: 70vh;
   display: flex;
@@ -65,7 +65,7 @@ p {
   margin-right: auto;
 }
 
-/* footer */
+/* footer area*/
 footer {
   height: 15vh;
 }
