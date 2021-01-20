@@ -79,7 +79,7 @@ function checkForDealKey(key, player) {//refactor opportunity
     dealCard(player);
   } else if (key === 'p' && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
     dealCard(player);
-  } else if (key === 'q' || key === 'p') {
+  } else {
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
   checkForEndScenario(); //if one player has no cards, make sure it's the other's turn
