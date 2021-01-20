@@ -1,7 +1,8 @@
 # **SlapJack**
 
-SlapJack is a Mod1 final project in the [Turing School of Software and Design](https://turing.io/). This card game uses a standard deck of cards, and the point of the game is to still have cards in your hand when your opponent runs out. At the beginning of the game, a full deck is dealt evenly between two players. The players then alternate turns dealing a card to the middle pile face-up. If at any time a slap scenario is presented in the middle pile (jack on top, two matching cards placed consecutively, or matching cards on top and position 3), a player can 'slap' and will have the contents of the middle pile shuffled into their deck. If the player slaps and there is no slap scenario present, the slapping player loses their top card, and it is added to the bottom of their opponent's deck. If one player runs out of cards, the only valid slap scenario for both players is if a jack is on top of the middle pile. Should the player without cards slap a non-jack, or their opponent slaps a valid jack first, the player without cards loses! If the player without cards slaps a valid jack, they receive the middle pile and the standard games rules go back into effect.
+SlapJack is a Mod1 final project in the [Turing School of Software and Design](https://turing.io/).
 
+This card game uses a standard deck of cards, and the point of the game is to still have cards in your hand when your opponent runs out. At the beginning of the game, a full deck is dealt evenly between two players. The players then alternate turns dealing a card to the middle pile face-up. If at any time a slap scenario is presented in the middle pile (jack on top, two matching cards placed consecutively, or matching cards on top and position 3), a player can 'slap' and will have the contents of the middle pile shuffled into their deck. If the player slaps and there is no slap scenario present, the slapping player loses their top card, and it is added to the bottom of their opponent's deck. If one player runs out of cards, the only valid slap scenario for both players is if a jack is on top of the middle pile. Should the player without cards slap a non-jack, or their opponent slaps a valid jack first, the player without cards loses! If the player without cards slaps a valid jack, they receive the middle pile and the standard games rules go back into effect.
 
 [Original Project Specifications and Game Rules](https://frontend.turing.io/projects/module-1/slapjack.html)
 
@@ -36,12 +37,14 @@ $ git clone git@github.com:JeffShepherd/SlapJack.git
 
 ## Reflections
 #### Wins
-  - Update
+  - Incorporating a method into the constructor method that assigns any saved wins from localStorage to the current win display.
+  - Figuring out how to use animation on a PNG, and ensure it doesn't block out any important messages by using the z-index for the first time.
+  - After honing workflow skills on other projects, I have seen some great improvements in professionalism. Using a more robust design process up front was extremely helpful with my code architecture. Also, committing more often proved helpful when issues arose.
 
 #### Challenges
   - I lost a lot of time (estimated half or full day) trying to solve for logic that wasn't correct. Whether it was my misinterpretation, or ambiguity of the instructions, I was writing code to solve for incorrect logic. In future projects, I will be sure to spend more time up front scrutinizing small project details.
   - I am relatively inexperienced with animation, so it took a lot of time to have the UFO glide accross the header. Ultimately, I am happy I spent the time doing this, as I learned a lot about animation.
-  - 
+  - A distracting family issue arose on the last day, and took time that I would have likely used for more features.
 
 #### Other Reflections
   - This project proved to me, even further, that spending time in the beginning designing how your app will be coded is crucial to the success of the project.
@@ -53,8 +56,3 @@ $ git clone git@github.com:JeffShepherd/SlapJack.git
 ## Programming Languages
  <img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/><img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/><img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>
 
-
-
- ## Source
- This app is modeled after a Turing School of Software & Design project *Insight Timer*
-  
