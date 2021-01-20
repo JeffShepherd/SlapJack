@@ -175,7 +175,7 @@ function displayHeaderMessage(message) {
   headerMessage.innerText = message;
   setTimeout(function() {
     addClass(headerMessage);
-  }, 7000)
+  }, 5000)
 };
 
 function addClass(element, className) {
