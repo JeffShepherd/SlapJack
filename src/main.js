@@ -82,7 +82,7 @@ function checkForDealKey(key, player) {//refactor opportunity
   } else {
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
-  checkForEndScenario(); //if one player has no cards, make sure it's the other's turn
+  switchTurnsAtEnd(); //if one player has no cards, make sure it's the other's turn
 };
 
 function dealCard(player) {
@@ -103,7 +103,7 @@ function giveWinningPlayerDeckBack(player) { //give deck back to player if they 
   }
 };
 
-function checkForEndScenario() {
+function switchTurnsAtEnd() {
   if (getHandLength(1) === 0) {
     game.playerTurn = 2;
   } else if (getHandLength(2) === 0) {
