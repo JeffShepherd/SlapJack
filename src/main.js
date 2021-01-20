@@ -76,19 +76,28 @@ function switchPlayer(player) {
 
 function checkForDealKey(key, player) {//refactor opportunity
   if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
-    game.moveCardToMiddle(); //move playerOne top card to middle
-    game.playerTurn = 2; //change player turn
-    giveWinningPlayerDeckBack(1); //give deck back to player if they are winning and out of cards
-    refreshCardImages();
+    // game.moveCardToMiddle(); //move playerOne top card to middle
+    // game.playerTurn = 2; //change player turn
+    // giveWinningPlayerDeckBack(1); //give deck back to player if they are winning and out of cards
+    // refreshCardImages();
+    dealCard(player);
   } else if (key === 'p' && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
-    game.moveCardToMiddle(); //move playerTwo top card to middle
-    game.playerTurn = 1; //change player turn
-    giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
-    refreshCardImages();
+    // game.moveCardToMiddle(); //move playerTwo top card to middle
+    // game.playerTurn = 1; //change player turn
+    // giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
+    // refreshCardImages();
+    dealCard(player);
   } else if (key === 'q' || key === 'p') {
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
   checkForEndScenario(); //if one player has no cards, make sure it's the other's turn
+};
+
+function dealCard(player) {
+  game.moveCardToMiddle(); //move playerTwo top card to middle
+  game.playerTurn = switchPlayer(player); //change player turn
+  giveWinningPlayerDeckBack(player); //give deck back to player if they are winning and out of cards
+  refreshCardImages();
 };
 
 function giveWinningPlayerDeckBack(player) { //give deck back to player if they are winning and out of cards
