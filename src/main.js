@@ -1,4 +1,3 @@
-//global variables and query selectors
 var game = new Game();
 var playerOnePile = document.querySelector('#playerOnePile');
 var centralPile = document.querySelector('#centralPile');
@@ -7,13 +6,11 @@ var headerMessage = document.querySelector('#headerMessage');
 var playerOneWins = document.querySelector('#playerOneWins');
 var playerTwoWins = document.querySelector('#playerTwoWins');
 
-//event listeners
 window.addEventListener('load', loadGame);
 document.addEventListener('keydown', function(event) {
   checkKeyPress(event);
 });
 
-//functions: data manipulation and data/DOM manipulation
 function checkKeyPress(event) {
   var key = event.key;
   var player;
@@ -140,7 +137,6 @@ function winGame(player) {
   updateWinCountDisplay(); //reset win count display to reflect current wins
 };
 
-//DOM manipulating functions
 function updateDisplayAfterTurn(message) {
   refreshCardImages();
   displayHeaderMessage(message);
