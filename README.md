@@ -32,7 +32,14 @@ $ git clone git@github.com:JeffShepherd/SlapJack.git
 
 
 ## Code Architecture
-  - Update
+  - index.html: Fewest elements possible used, with as many being semantic as possible.
+  - styles.css: Organized by section, and includes classes used across multiple elements for styling.
+  - player.js (data only):
+    - Constructor properties include id, wins, and hand. Wins update automatically on page load if there is anything saved to localStorage for that player.
+    - Methods allow a Player to play(remove) a card from their hand, save wins to storange, and get saved wins from localStorage.
+  - game.js (data only):
+    - Constructor properties include two unique instances of Player, player turn, central pile, and a full deck to be used upon game load or refresh.
+    - Methods allow for: shuffling deck, winning the central pile, dealing the deck in the beginning of the game, moving a specific player's card to the middle pile, punishing a bad slap, checking for a good slap (as well as individual methods for each type of slap), checking for a good slap during the end game scenario, and resetting the game.
 
 
 ## Reflections
@@ -44,7 +51,7 @@ $ git clone git@github.com:JeffShepherd/SlapJack.git
 #### Challenges
   - I lost a lot of time (estimated half or full day) trying to solve for logic that wasn't correct. Whether it was my misinterpretation, or ambiguity of the instructions, I was writing code to solve for incorrect logic. In future projects, I will be sure to spend more time up front scrutinizing small project details.
   - I am relatively inexperienced with animation, so it took a lot of time to have the UFO glide accross the header. Ultimately, I am happy I spent the time doing this, as I learned a lot about animation.
-  - A distracting family issue arose on the last day, and took time that I would have likely used for more features.
+  - A distracting family issue arose on the last day, and took time that I would have likely used for additional features.
 
 #### Other Reflections
   - This project proved to me, even further, that spending time in the beginning designing how your app will be coded is crucial to the success of the project.
