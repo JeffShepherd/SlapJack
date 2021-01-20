@@ -1,6 +1,6 @@
 # **SlapJack**
 
-SlapJack is a Mod1 final project in the [Turing School of Software and Design](https://turing.io/).
+SlapJack is the Mod1 final project in the [Turing School of Software and Design](https://turing.io/).
 
 This card game uses a standard deck of cards, and the point of the game is to still have cards in your hand when your opponent runs out. At the beginning of the game, a full deck is dealt evenly between two players. The players then alternate turns dealing a card to the middle pile face-up. If at any time a slap scenario is presented in the middle pile (jack on top, two matching cards placed consecutively, or matching cards on top and position 3), a player can 'slap' and will have the contents of the middle pile shuffled into their deck. If the player slaps and there is no slap scenario present, the slapping player loses their top card, and it is added to the bottom of their opponent's deck. If one player runs out of cards, the only valid slap scenario for both players is if a jack is on top of the middle pile. Should the player without cards slap a non-jack, or their opponent slaps a valid jack first, the player without cards loses! If the player without cards slaps a valid jack, they receive the middle pile and the standard games rules go back into effect.
 
@@ -19,7 +19,7 @@ $ git clone git@github.com:JeffShepherd/SlapJack.git
 ```
 
 
-**screenshot of gif goes here**
+![Winner winner chicken dinner](./assets/readme-images/winner.png)
 
 
 ## Learning Goals
@@ -40,6 +40,9 @@ $ git clone git@github.com:JeffShepherd/SlapJack.git
   - game.js (data only):
     - Constructor properties include two unique instances of Player, player turn, central pile, and a full deck to be used upon game load or refresh.
     - Methods allow for: shuffling deck, winning the central pile, dealing the deck in the beginning of the game, moving a specific player's card to the middle pile, punishing a bad slap, checking for a good slap (as well as individual methods for each type of slap), checking for a good slap during the end game scenario, and resetting the game.
+  - main.js
+    - This file includes the global variable, event listeners, and functions that are invoked by specific events.
+    - All functionality updates the data model first, and then updates the DOM.
 
 
 ## Reflections
