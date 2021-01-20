@@ -19,10 +19,10 @@ function checkKeyPress(event) {
   var player;
   if (key === 'f' || key === 'j') {
     player = assignPlayer(key);
-    checkForSlapKey(player);
+    validateSlap(player);
   } else if (key === 'q' || key === 'p') {
     player = assignPlayer(key);
-    checkForDealKey(key, player);
+    validateDeal(key, player);
   } else {
     displayHeaderMessage(`Invalid key pressed!`);
   }
@@ -37,27 +37,35 @@ function assignPlayer(key) {
   }
 };
 
-function checkForSlapKey(player) {
+function validateSlap(player) {
   if (getHandLength(player) === 0) { //if player's hand length is 0
-    if (game.slapAtEndGame()) { //check if top card in center is a jack
-      game.winCentralPile(player); //player gets central pile
-      updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
+    slapIfPlayerHasZero(player);
+  } else {
+    slapIfBothHaveCards(player);
+  }
+};
+
+function slapIfPlayerHasZero(player) {
+  if (game.slapAtEndGame()) { //check if top card in center is a jack
+    game.winCentralPile(player); //player gets central pile
+    updateDisplayAfterTurn(`Good slap! Player${player} is back in the game!!`);
+  } else {
+    winGame(switchPlayer(player));
+  }
+};
+
+function slapIfBothHaveCards(player) {
+  if (game.slap()) { //check for jack pair or sandwich
+    if (game.centralPile[0].includes('jack') && getHandLength(switchPlayer(player)) === 0) { //win if jack on top and opp has 0 cards
+      winGame(player);
+    } else if (getHandLength(switchPlayer(player)) === 0) {
+      updateOnBadSlap(player);
     } else {
-      winGame(switchPlayer(player));
+      game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
+      updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
     }
   } else {
-    if (game.slap()) { //check for jack pair or sandwich
-      if (game.centralPile[0].includes('jack') && getHandLength(switchPlayer(player)) === 0) { //win if jack on top and opp has 0 cards
-        winGame(player);
-      } else if (getHandLength(switchPlayer(player)) === 0){
-        updateOnBadSlap(player);
-      } else {
-        game.winCentralPile(player); //player wins middle cards and shuffle them into their deck
-        updateDisplayAfterTurn(`Good slap! Player${player} takes central pile!!`); //show header message
-      }
-    } else {
-      updateOnBadSlap(player);
-    }
+    updateOnBadSlap(player);
   }
 };
 
@@ -74,21 +82,22 @@ function switchPlayer(player) {
   }
 };
 
-function checkForDealKey(key, player) {//refactor opportunity
+function validateDeal(key, player) { //refactor opportunity
   if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
-    game.moveCardToMiddle(); //move playerOne top card to middle
-    game.playerTurn = 2; //change player turn
-    giveWinningPlayerDeckBack(1); //give deck back to player if they are winning and out of cards
-    refreshCardImages();
+    dealCard(player);
   } else if (key === 'p' && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
-    game.moveCardToMiddle(); //move playerTwo top card to middle
-    game.playerTurn = 1; //change player turn
-    giveWinningPlayerDeckBack(2); //give deck back to player if they are winning and out of cards
-    refreshCardImages();
-  } else if (key === 'q' || key === 'p') {
+    dealCard(player);
+  } else {
     displayHeaderMessage(`Player${player} jumped the gun! It's not your turn!`);
   }
-  checkForEndScenario(); //if one player has no cards, make sure it's the other's turn
+  switchTurnsAtEnd(); //if one player has no cards, make sure it's the other's turn
+};
+
+function dealCard(player) {
+  game.moveCardToMiddle(); //move playerTwo top card to middle
+  game.playerTurn = switchPlayer(player); //change player turn
+  giveWinningPlayerDeckBack(player); //give deck back to player if they are winning and out of cards
+  refreshCardImages();
 };
 
 function giveWinningPlayerDeckBack(player) { //give deck back to player if they are winning and out of cards
@@ -102,7 +111,7 @@ function giveWinningPlayerDeckBack(player) { //give deck back to player if they 
   }
 };
 
-function checkForEndScenario() {
+function switchTurnsAtEnd() {
   if (getHandLength(1) === 0) {
     game.playerTurn = 2;
   } else if (getHandLength(2) === 0) {
@@ -166,7 +175,7 @@ function displayHeaderMessage(message) {
   headerMessage.innerText = message;
   setTimeout(function() {
     addClass(headerMessage);
-  }, 7000)
+  }, 5000)
 };
 
 function addClass(element, className) {
