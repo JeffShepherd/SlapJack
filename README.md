@@ -4,6 +4,15 @@ SlapJack is the Mod1 final project in the [Turing School of Software and Design]
 
 This card game uses a standard deck of cards, and the point of the game is to still have cards in your hand when your opponent runs out. At the beginning of the game, a full deck is dealt evenly between two players. The players then alternate turns dealing a card to the middle pile face-up. If at any time a slap scenario is presented in the middle pile (jack on top, two matching cards placed consecutively, or matching cards on top and position 3), a player can 'slap' and will have the contents of the middle pile shuffled into their deck. If the player slaps and there is no slap scenario present, the slapping player loses their top card, and it is added to the bottom of their opponent's deck. If one player runs out of cards, the only valid slap scenario for both players is if a jack is on top of the middle pile. Should the player without cards slap a non-jack, or their opponent slaps a valid jack first, the player without cards loses! If the player without cards slaps a valid jack, they receive the middle pile and the standard games rules go back into effect.
 
+Player 1’s keyboard controls:
+
+ - q to deal a card
+  - f to slap
+
+Player 2’s keyboard controls:
+- p to deal a card
+- j to slap
+
 [Original Project Specifications and Game Rules](https://frontend.turing.io/projects/module-1/slapjack.html)
 
 
