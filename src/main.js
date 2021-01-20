@@ -22,7 +22,7 @@ function checkKeyPress(event) {
     validateSlap(player);
   } else if (key === 'q' || key === 'p') {
     player = assignPlayer(key);
-    checkForDealKey(key, player);
+    validateDeal(key, player);
   } else {
     displayHeaderMessage(`Invalid key pressed!`);
   }
@@ -69,9 +69,6 @@ function slapIfBothHaveCards(player) {
   }
 };
 
-
-
-
 function updateOnBadSlap(player) {
   game.punishBadSlap(player); //bad slap (slapper loses top card of their hand and it goes to bottom of opponent's hand)
   updateDisplayAfterTurn(`Bad slap! Player${player} forfeits a card!!`); //show header message
@@ -85,7 +82,7 @@ function switchPlayer(player) {
   }
 };
 
-function checkForDealKey(key, player) { //refactor opportunity
+function validateDeal(key, player) { //refactor opportunity
   if (key === 'q' && game.playerTurn === 1 && getHandLength(1) > 0) { //key q - playerOne deal if it's their turn
     dealCard(player);
   } else if (key === 'p' && game.playerTurn === 2 && getHandLength(2) > 0) { //key p - playerTwo deal - playerTwo deal if it's their turn
