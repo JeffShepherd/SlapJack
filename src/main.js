@@ -90,20 +90,20 @@ function validateDeal(key, player) {
 };
 
 function dealCard(player) {
-  game.moveCardToMiddle(); //move playerTwo top card to middle
-  game.playerTurn = switchPlayer(player); //change player turn
-  giveWinningPlayerDeckBack(player); //give deck back to player if they are winning and out of cards
+  game.moveCardToMiddle();
+  game.playerTurn = switchPlayer(player);
+  giveWinningPlayerDeckBack(player);
   refreshCardImages();
 };
 
-function giveWinningPlayerDeckBack(player) { //give deck back to player if they are winning and out of cards
-  if (getHandLength(1) !== 0 || getHandLength(2) !== 0) { //if either player has cards, exit function
+function giveWinningPlayerDeckBack(player) {
+  if (getHandLength(1) !== 0 || getHandLength(2) !== 0) {
     return;
   }
   if (player === 1) {
-    game.winCentralPile(1); //shuffle middle deck and give to player1 if player2 has no
+    game.winCentralPile(1);
   } else if (player === 2) {
-    game.winCentralPile(2); //shuffle middle deck and give to player
+    game.winCentralPile(2);
   }
 };
 
@@ -124,16 +124,16 @@ function getHandLength(player) {
 };
 
 function loadGame() {
-  game.resetGame(); //resets central pile and repopulates fullDeck
-  refreshCardImages(); //update card images on DOM
-  updateWinCountDisplay(); //reset win count display to reflect current wins
+  game.resetGame();
+  refreshCardImages();
+  updateWinCountDisplay();
 };
 
 function winGame(player) {
-  game.resetGame(); //sets p1 p2 and central pile to [], then shuffles and deals full deck
-  game.updateWinCount(player); //adds 1 to winning player's win count
-  updateDisplayAfterTurn(`PLAYER${player} WINS!`); //refresh card images and show win message
-  updateWinCountDisplay(); //reset win count display to reflect current wins
+  game.resetGame();
+  game.updateWinCount(player);
+  updateDisplayAfterTurn(`PLAYER${player} WINS!`);
+  updateWinCountDisplay();
 };
 
 function updateDisplayAfterTurn(message) {
